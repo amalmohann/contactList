@@ -11,8 +11,12 @@ router.get('/contacts',(req,res,next)=>{
 })
 
 //for adding data
-router.get('contact/add',(req,res,next)=>{
+router.post('/contact',(req,res,next)=>{
     //logic to add data(contacts)
+})
+
+router.delete('/contact/:id',(req,res,next)=>{
+    //logic to delete data
 })
 
 module.exports = router
