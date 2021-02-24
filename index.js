@@ -21,7 +21,7 @@ app.get('/',(req,res)=>{
 })
 
 //adding router
-const route = require('/routes/route')
+const route = require('./routes/route')
 app.use('/api',route)
 
 //adding middlewares
