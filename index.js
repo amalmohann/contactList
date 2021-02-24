@@ -31,7 +31,5 @@ app.use(cors())
 //body-parser
 app.use(bodyParser.json())
 
-
-
-
-
+//adding the static files
+app.use(express.static(path.join(__dirname,'public')))
