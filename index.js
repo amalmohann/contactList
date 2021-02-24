@@ -19,3 +19,13 @@ app.listen(port,()=>{
 app.get('/',(req,res)=>{
     res.send('The route is working')
 })
+
+//adding router
+const route = require('/routes/route')
+app.use('/api',route)
+
+
+
+
+
+
