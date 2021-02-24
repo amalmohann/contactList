@@ -24,6 +24,12 @@ app.get('/',(req,res)=>{
 const route = require('/routes/route')
 app.use('/api',route)
 
+//adding middlewares
+//cors
+app.use(cors())
+
+//body-parser
+app.use(bodyParser.json())
 
 
 
