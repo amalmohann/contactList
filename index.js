@@ -33,3 +33,19 @@ app.use(bodyParser.json())
 
 //adding the static files
 app.use(express.static(path.join(__dirname,'public')))
+
+//connect to mongodb
+mongoose.connect('mongodb://localhost:27017/contactlist')
+
+//on connection success
+mongoose.connection.on('connected',()=>{
+    console.log('connected Successfuly with mongoDB at port 27017')
+})
+
+//on connection error
+mongoose.connection.on('error',(err)=>{
+    if(err){
+        console.log("Error in database connection: " +err)
+    }
+})
+
