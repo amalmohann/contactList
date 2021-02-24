@@ -16,7 +16,26 @@ router.get('/contacts',(req,res,next)=>{
 
 //for adding data
 router.post('/contact',(req,res,next)=>{
-    //logic to add data(contacts)
+    let newContact = new Contact({
+        firstName:req.body.firstName,
+        LastName : req.body.LastName,
+        phone : req.body.phone
+    })
+
+    newContact.save((err, contact)=>{
+        if(err){
+            res.json({
+                status: "ERROR",
+                msg: "Contact Creation Failed"
+            })
+        }
+        else{
+            res.json({
+                status: "SUCCESS",
+                msg: "Contact Creation Successful"
+            })
+        }
+    })
 })
 
 router.delete('/contact/:id',(req,res,next)=>{
