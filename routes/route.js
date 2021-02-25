@@ -15,15 +15,16 @@ router.get('/contacts',(req,res,next)=>{
 })
 
 //for adding data
-router.post('/contact',(req,res,next)=>{
+router.post('/contact',(req, res, next)=>{
     let newContact = new Contact({
-        firstName:req.body.firstName,
-        LastName : req.body.LastName,
+        firstName: req.body.firstName,
+        LastName : req.body.lastName,
         phone : req.body.phone
     })
-
+    
     newContact.save((err, contact)=>{
         if(err){
+            console.log(err);
             res.json({
                 status: "ERROR",
                 msg: "Contact Creation Failed"
@@ -39,7 +40,29 @@ router.post('/contact',(req,res,next)=>{
 })
 
 router.delete('/contact/:id',(req,res,next)=>{
-    //logic to delete data
+    Contact.remove({_id: req.params.id},(err,result)=>{
+        if(err){
+            res.json({
+                status: "ERROR",
+                msg: "Contact Deletion Failed",
+            })
+        }
+        else{
+            if(result.deletedCount>0){
+                res.json({
+                    status: "SUCCESS",
+                    msg:"Contact Deletion Successful",
+                })
+            }
+            else{
+                res.json({
+                    status: "ERROR",
+                    msg: "Contact Deletion Failed",
+                })
+            }
+            
+        }
+    })
 })
 
 
